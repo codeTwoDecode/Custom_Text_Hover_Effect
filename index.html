@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Text Hover Effect</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Aclonica&display=swap');
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --bgColor: rgb(227, 227, 253);
+            --textBlack: #020001;
+            --textWhite: #ffffff;
+        }
+
+        html {
+            font-size: 62.5%;
+            font-family: "Aclonica", sans-serif;
+        }
+
+        body {
+            background-color: var(--bgColor);
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            position: relatives;
+        }
+
+        h1 {
+            position: absolute;
+            font-size: 10rem;
+            /* font-weight: bold; */
+            letter-spacing: 1.5rem;
+            cursor: pointer;
+            text-transform: uppercase;
+            text-shadow: 0 0.5rem 1rem rgba(163, 163, 250, 0.9);
+            /* transition: clip-path 0.3s linear; */
+            transition: all 0.3s linear;
+            /* Note- transition effect work only for same shape of polygon of clip-path like each must be trapezoid or triangle etc. if one is triangle and another is trapezoid then transition doesn't work. */
+        }
+
+        h1:first-child {
+            color: var(--textWhite);
+        }
+
+        h1:last-child {
+            color: var(--textBlack);
+            /* ------1M-------triangle------- */
+            /* clip-path: polygon(100% 0, 0% 100%, 100% 100%); */
+
+            /* ------2M-------trapezoid------ */
+            clip-path: polygon(50% 50%, 100% 0, 100% 100%, 0% 100%);
+            background-color: var(--bgColor);
+        }
+
+        h1:last-child:hover {
+            /* --------trapezoid-------- */
+            clip-path: polygon(0 0, 100% 0, 100% 100%, 0% 100%);
+        }
+
+        h1:first-child:hover~h1 {
+            /* --------trapezoid-------- */
+            clip-path: polygon(0 100%, 100% 100%, 100% 100%, 0% 100%);
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <h1>white</h1>
+        <h1>black</h1>
+    </div>
+</body>
+
+</html>
